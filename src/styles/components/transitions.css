@@ -1,0 +1,45 @@
+/* purgecss start ignore */
+
+/* Fade Transition
+---------------------------------------------------------------------------- */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .15s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* ZoomIn Transition
+---------------------------------------------------------------------------- */
+.zoom-in-enter-active,
+.zoom-in-leave-active {
+  transition: all .1s;
+}
+
+.zoom-in-enter {
+  opacity: 0;
+  transform: scale(1.1);
+}
+.zoom-in-leave-to {
+  opacity: 0;
+}
+
+/* ZoomOut Transition
+---------------------------------------------------------------------------- */
+.zoom-out-enter-active,
+.zoom-out-leave-active {
+  transition: all .1s;
+}
+
+.zoom-out-enter {
+  opacity: 0;
+}
+.zoom-out-leave-to {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+/* purgecss end ignore */

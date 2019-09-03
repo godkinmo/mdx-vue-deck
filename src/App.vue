@@ -1,31 +1,18 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div>
+    <transition
+      enter-active-class="transition-all transition-fast"
+      leave-active-class="transition-all transition-fast"
+      enter-class="opacity-0 scale-0"
+      enter-to-class="opacity-100 scale-100"
+      leave-class="opacity-100 scale-100"
+      leave-to-class="opacity-0 scale-0"
+      mode="out-in"
+    >
+      <router-view :key="$route.name + ($route.params.page || '')" class="origin-right">
+      </router-view>
+    </transition>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<style src="./styles/main.css"></style>

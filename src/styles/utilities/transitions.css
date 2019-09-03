@@ -1,0 +1,46 @@
+.origin-left {
+  transform-origin: left;
+}
+.origin-right {
+  transform-origin: right;
+}
+.transition-all {
+  transition-property: all;
+}
+.transition-fastest {
+  transition-duration: 50ms;
+}
+.transition-faster {
+  transition-duration: 100ms;
+}
+.transition-fast {
+  transition-duration: 150ms;
+}
+.transition-medium {
+  transition-duration: 200ms;
+}
+.ease-out-quad {
+  transition-timing-function: cubic-bezier(.25, .46, .45, .94);
+}
+.ease-in-quad {
+  transition-timing-function: cubic-bezier(.55, .085, .68, .53);
+}
+.scale-0 {
+  transform: scale(0);
+}
+.scale-70 {
+  transform: scale(.7);
+}
+.scale-100 {
+  transform: scale(1);
+}
+.scale-110 {
+  transform: scale(1.1);
+}
+
+.grayscale-100 {
+  filter: grayscale(1);
+}
+.hover\:grayscale-0:hover {
+  filter: grayscale(0);
+}
