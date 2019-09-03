@@ -1,7 +1,6 @@
 <template>
   <div class="relative h-screen flex flex-col items-center justify-center p-4">
     <Deck ref="markdown" class="hidden" />
-
     <div class="w-full max-w-3xl mx-auto">
       <div class="markdown" v-html="decks[page-1]"></div>
     </div>

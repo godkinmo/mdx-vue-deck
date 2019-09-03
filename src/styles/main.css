@@ -5,14 +5,11 @@
 
 @import "tailwindcss/components";
 
-/* Add custom components here... */
-@import "./components/transitions.css";
-
 /* purgecss start ignore */
+@import "./components/transitions.css";
 @import "./prism-atom-dark.css";
 @import "./markdown.css";
 /* purgecss end ignore */
-
 
 @import "tailwindcss/utilities";
 @import "./utilities/transitions.css";
@@ -35,7 +32,6 @@
 .scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
   @apply rounded !important;
 }
-
 .table-collapse {
   border-collapse: collapse !important;
 }

@@ -19,6 +19,9 @@
 .transition-medium {
   transition-duration: 200ms;
 }
+.transition-normal {
+  transition-duration: 300ms;
+}
 .ease-out-quad {
   transition-timing-function: cubic-bezier(.25, .46, .45, .94);
 }
@@ -33,9 +36,6 @@
 }
 .scale-100 {
   transform: scale(1);
-}
-.scale-110 {
-  transform: scale(1.1);
 }
 
 .grayscale-100 {
