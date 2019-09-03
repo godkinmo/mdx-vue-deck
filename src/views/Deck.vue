@@ -1,6 +1,5 @@
 <template>
   <div class="h-full">
-    <Deck ref="markdown" class="hidden" />
     <div class="flex items-center justify-center h-full overflow-hidden">
       <div class="markdown w-full h-full" v-html="decks[page-1]"></div>
     </div>
@@ -8,30 +7,11 @@
 </template>
 
 <script>
-import Prism from 'prismjs'
-import Deck from '@/mdx/deck.mdx'
 
 export default {
-  components: {
-    Deck,
-  },
-
-  data() {
-    return {
-      decks: [],
-    }
-  },
-
-  computed: {
-    page() {
-      return parseInt(this.$route.params.page) || 1
-    },
-  },
+  props: ['decks', 'page'],
 
   mounted() {
-    Prism.highlightAll()
-    this.decks = this.$refs.markdown.$el.innerHTML.split('<hr>')
-
     window.addEventListener('keydown', this.keydownHandler)
 
     this.$on('hook:destroyed', () => {
