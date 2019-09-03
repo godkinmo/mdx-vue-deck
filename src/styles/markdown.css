@@ -1,18 +1,20 @@
 .markdown {
-  @apply text-gray-200 leading-relaxed;
+  @apply text-gray-200 leading-relaxed flex flex-col items-center justify-center;
+
+  font-size: 32px;
 
   & > * + * {
     @apply mt-6;
   }
 
   & h1 {
-    @apply text-3xl font-bold text-gray-100 leading-tight;
+    @apply text-6xl font-bold text-gray-100 leading-tight;
   }
   & h2 {
-    @apply text-2xl font-bold text-gray-100 leading-tight;
+    @apply text-5xl font-bold text-gray-100 leading-tight;
   }
   & h3 {
-    @apply text-xl font-bold text-gray-100 leading-tight;
+    @apply text-4xl font-bold text-gray-100 leading-tight;
   }
 
   & a {
@@ -46,7 +48,7 @@
   }
 
   & > pre {
-    @apply font-mono rounded-lg;
+    @apply font-mono rounded bg-black p-4 text-blue-400;
     font-weight: 400;
     scrollbar-width: none;
     &::-webkit-scrollbar {

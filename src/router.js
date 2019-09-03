@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Deck from './views/Deck.vue';
 
 Vue.use(Router);
 
@@ -19,7 +19,7 @@ export default new Router({
     {
       path: '/:page?',
       name: 'home',
-      component: Home,
+      component: Deck,
     },
   ],
 });

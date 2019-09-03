@@ -1,9 +1,8 @@
 <template>
-  <div class="relative h-screen flex flex-col items-center justify-center">
+  <div class="h-full">
     <Deck ref="markdown" class="hidden" />
-
-    <div class="w-full max-w-4xl mx-auto overflow-hidden">
-      <div class="markdown" v-html="decks[page-1]"></div>
+    <div class="flex items-center justify-center h-full overflow-hidden">
+      <div class="markdown w-full h-full" v-html="decks[page-1]"></div>
     </div>
   </div>
 </template>
@@ -20,8 +19,13 @@ export default {
   data() {
     return {
       decks: [],
-      page: this.$route.params.page || 1,
     }
+  },
+
+  computed: {
+    page() {
+      return parseInt(this.$route.params.page) || 1
+    },
   },
 
   mounted() {
@@ -35,22 +39,15 @@ export default {
     })
   },
 
-  watch: {
-    page() {
-      this.$router.push({ name: 'home', params: { page: this.page}})
-        .catch(() => {})
-    }
-  },
-
   methods: {
     keydownHandler(e) {
       if (e.key === 'ArrowRight') {
         if (this.page < this.decks.length) {
-          this.page++
+          this.$router.push({ name: 'home', params: { page: this.page+1}})
         }
       } else if (e.key === 'ArrowLeft') {
         if (this.page > 1) {
-          this.page--
+          this.$router.push({ name: 'home', params: { page: this.page-1}})
         }
       }
     },

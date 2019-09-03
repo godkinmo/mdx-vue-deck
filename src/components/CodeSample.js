@@ -45,8 +45,8 @@ export default {
 
   render(createElement) {
     return createElement('div', {
-      attr: {
-        class: 'relative overflow-hidden mb-8'
+      attrs: {
+        class: 'relative w-full max-w-3xl overflow-hidden mb-8'
       }
     }, [
       createElement('div', {
