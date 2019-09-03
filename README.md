@@ -1,4 +1,4 @@
-# vue-deck
+# VUE MDX Deck
 
 ## Project setup
 ```
@@ -15,20 +15,9 @@ yarn run serve
 yarn run build
 ```
 
-### Run your tests
-```
-yarn run test
-```
 
-### Lints and fixes files
-```
-yarn run lint
-```
+## Write markdown in hot reload
 
-### Run your unit tests
-```
-yarn run test:unit
-```
+Just modify the `src/mdx/deck.mdx` start!
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](./demo.gif)
