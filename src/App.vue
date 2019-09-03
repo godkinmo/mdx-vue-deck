@@ -1,18 +1,14 @@
 <template>
   <div class="flex flex-row">
-    <Deck ref="markdown" class="hidden" />
+    <mdx-deck ref="markdown" class="hidden" />
 
     <overview-sidebar v-if="overview" :decks="decks" :page="page" class="w-1/6" />
 
     <div class="flex flex-col h-screen overflow-hidden"
-      :class="[ overview ? 'w-5/6' : 'w-full']"
+      :class="[ overview ? 'w-5/6 pt-4 bg-black' : 'w-full']"
     >
       <transition :name="transitionName" mode="out-in">
-        <router-view
-          :decks="decks"
-          :page="page"
-          :key="$route.name + ($route.params.page || '')"
-        >
+        <router-view :key="$route.name + ($route.params.page || '')" :page="page" :decks="decks">
         </router-view>
       </transition>
 
@@ -24,14 +20,13 @@
 </template>
 
 <script>
-import Prism from 'prismjs'
 import Mousetrap from 'mousetrap'
-import Deck from '@/mdx/deck.mdx'
+import MdxDeck from '@/mdx/deck.mdx'
 import OverviewSidebar from '@/components/OverviewSidebar.vue'
 
 export default {
   components: {
-    Deck,
+    MdxDeck,
     OverviewSidebar,
   },
 
@@ -58,8 +53,6 @@ export default {
   },
 
   mounted() {
-    Prism.highlightAll()
-
     this.decks = this.$refs.markdown.$el.innerHTML.split('<hr>')
 
     Mousetrap.bind('option+o', () => {
