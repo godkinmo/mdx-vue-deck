@@ -1,6 +1,10 @@
 <template>
-  <div class="flex items-center justify-center h-full overflow-hidden bg-gray-900">
-    <mdx-deck ref="deck" class="markdown w-full h-full" />
+  <div class="absolute inset-0 overflow-hidden">
+    <mdx-deck
+      ref="deck"
+      class="flex flex-row justify-start w-full h-full transition-transform transition-normal"
+      :style="styleObj"
+    />
   </div>
 </template>
 
@@ -15,7 +19,21 @@ export default {
 
   props: ['page', 'decks'],
 
+  computed: {
+    styleObj() {
+      return {
+        transform: `translateX(-${(
+          (Math.abs(this.$store.state.currentPage-this.page) === 1
+            ? this.page
+            : this.$store.state.currentPage
+          ) -1 )*100}%)`,
+      }
+    }
+  },
+
   mounted() {
+    this.$store.commit('setCurrentPage', this.page)
+
     Prism.highlightAll()
 
     window.addEventListener('keydown', this.keydownHandler)
@@ -25,13 +43,27 @@ export default {
     })
 
     let deckPage = 1
+    let newDecks = [[]]
+
     Array.from(this.$refs.deck.$el.children).forEach(el => {
       if (el.outerHTML === '<hr>') {
+        newDecks[deckPage] = []
         deckPage++
+      } else {
+        newDecks[deckPage-1].push(el)
       }
-      if (deckPage !== this.page) {
-        el.classList.add('hidden')
-      }
+    })
+
+    this.$refs.deck.$el.innerHTML = ''
+
+    newDecks.forEach(deck => {
+      const node = document.createElement('div')
+      const classList = 'markdown w-full h-full flex-shrink-0 flex flex-col items-center justify-center'
+      classList.split(' ').forEach(c => node.classList.add(c))
+
+      deck.forEach(el => node.appendChild(el))
+
+      this.$refs.deck.$el.append(node)
     })
   },
 

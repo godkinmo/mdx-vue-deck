@@ -4,15 +4,21 @@
 
     <overview-sidebar v-if="overview" :decks="decks" :page="page" class="w-1/6" />
 
-    <div class="flex flex-col h-screen overflow-hidden"
+    <div class="flex flex-col h-screen"
       :class="[ overview ? 'w-5/6 pt-4 bg-black' : 'w-full']"
     >
-      <transition :name="transitionName" mode="out-in">
-        <router-view :key="$route.name + ($route.params.page || '')" :page="page" :decks="decks">
-        </router-view>
-      </transition>
+      <div class="relative h-full overflow-hidden bg-gray-900">
+        <transition :name="transitionName">
+          <router-view :key="$route.name + ($route.params.page || '')" :page="page" :decks="decks">
+          </router-view>
+        </transition>
+      </div>
 
-      <div v-if="overview" class="bg-black p-4">
+      <!-- <div class="absolute bottom-0 w-full border flex items-center">
+        dots
+      </div> -->
+
+      <div v-if="overview" class="bg-black p-4 text-right">
         {{ page }} / {{ decks.length }}
       </div>
     </div>

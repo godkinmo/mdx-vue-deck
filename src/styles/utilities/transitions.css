@@ -7,6 +7,9 @@
 .transition-all {
   transition-property: all;
 }
+.transition-transform {
+  transition-property: transform;
+}
 .transition-fastest {
   transition-duration: 50ms;
 }
@@ -21,6 +24,9 @@
 }
 .transition-normal {
   transition-duration: 300ms;
+}
+.transition-slow {
+  transition-duration: 1000ms;
 }
 .ease-out-quad {
   transition-timing-function: cubic-bezier(.25, .46, .45, .94);
