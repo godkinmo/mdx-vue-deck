@@ -2,7 +2,7 @@
   <div class="flex flex-row">
     <mdx-deck ref="markdown" class="hidden" />
 
-    <overview-sidebar v-if="overview" :decks="decks" :page="page" class="w-1/6" />
+    <overview-sidebar v-if="overview" :decks="decks" :page="page" class="w-1/6" @go-page="goPage" />
 
     <div class="flex flex-col h-screen"
       :class="[ overview ? 'w-5/6 pt-4 bg-black' : 'w-full']"
@@ -14,12 +14,18 @@
         </transition>
       </div>
 
-      <!-- <div class="absolute bottom-0 w-full border flex items-center">
-        dots
-      </div> -->
-
       <div v-if="overview" class="bg-black p-4 text-right">
         {{ page }} / {{ decks.length }}
+      </div>
+      <div v-else class="absolute bottom-0 w-full py-4 flex justify-center">
+        <button type="button" v-for="i in decks.length" :key="i" class="inline-block w-2 h-2 border-4 border-transparent p-1 rounded-full bg-white cursor-default outline-none focus:shadow-outline-sm"
+          style="background-clip: padding-box;"
+          :class="[
+            i <= page ? 'opacity-50' : 'opacity-25',
+          ]"
+          @click="goPage(i)"
+        >
+        </button>
       </div>
     </div>
   </div>
@@ -65,6 +71,12 @@ export default {
       this.$store.commit('toggleOverview')
     })
   },
+
+  methods: {
+    goPage(page) {
+      this.$router.push({ name: 'home', params: { page }})
+    },
+  }
 }
 </script>
 

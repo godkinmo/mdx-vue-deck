@@ -3,7 +3,7 @@
     <li v-for="(deck, i) in decks" :key="i" class="px-4 mb-4">
       <div class="relative pb-7/12 border-4 cursor-pointer overflow-hidden bg-gray-900"
         :class="[ page === i+1 ? 'border-blue-500' : 'border-transparent' ]"
-        @click="goPage(i+1)"
+        @click="$emit('go-page', i+1)"
       >
         <div class="absolute markdown pointer-events-none"
           v-html="decks[i]"
@@ -32,10 +32,6 @@ export default {
   },
 
   methods: {
-    goPage(page) {
-      this.$router.push({ name: 'home', params: { page }})
-    },
-
     scrollToHighlighted(index, block='nearest') {
       this.$refs.decks.children[index].scrollIntoView({
         block

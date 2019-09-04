@@ -43,6 +43,9 @@ module.exports = {
         '11/12': '91.666667%',
         'full': '100%',
       },
+      boxShadow: {
+        'outline-sm': '0 0 0 1px',
+      },
     }
   },
   variants: {},
