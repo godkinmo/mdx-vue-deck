@@ -77,18 +77,10 @@ export default {
   mounted() {
     this.decks = this.$refs.markdown.$el.innerHTML.split('<hr>')
 
-    Mousetrap.bind('option+o', () => {
-      this.$store.commit('toggleMode', 'overview')
-    })
-    Mousetrap.bind('option+g', () => {
-      this.$store.commit('toggleMode', 'grid')
-    })
-
-    window.addEventListener('keydown', this.keydownHandler)
-
-    this.$on('hook:destroyed', () => {
-      window.removeEventListener('keydown', this.keydownHandler)
-    })
+    Mousetrap.bind('option+o', () => this.$store.commit('toggleMode', 'overview'))
+    Mousetrap.bind('option+g', () => this.$store.commit('toggleMode', 'grid') )
+    Mousetrap.bind(['right', 'pagedown', 'space'], () => this.next())
+    Mousetrap.bind(['left', 'pageup', 'shift+space'], () => this.previous())
   },
 
   methods: {
@@ -98,15 +90,14 @@ export default {
       }
       this.$router.push({ name: 'home', params: { page }})
     },
-    keydownHandler(e) {
-      if (e.key === 'ArrowRight') {
-        if (this.page < this.decks.length) {
-          this.$router.push({ name: 'home', params: { page: this.page+1}})
-        }
-      } else if (e.key === 'ArrowLeft') {
-        if (this.page > 1) {
-          this.$router.push({ name: 'home', params: { page: this.page-1}})
-        }
+    next() {
+      if (this.page < this.decks.length) {
+        this.$router.push({ name: 'home', params: { page: this.page+1}})
+      }
+    },
+    previous() {
+      if (this.page > 1) {
+        this.$router.push({ name: 'home', params: { page: this.page-1}})
       }
     },
   },
