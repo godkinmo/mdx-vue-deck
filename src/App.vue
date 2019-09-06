@@ -34,12 +34,20 @@
 import Mousetrap from 'mousetrap'
 import MdxDeck from '@/mdx/deck.mdx'
 
+import PresenterMode from '@/components/PresenterMode.vue'
 import OverviewMode from '@/components/OverviewMode.vue'
 import GridMode from '@/components/GridMode.vue'
 
+import InteractsWithStorage from '@/mixins/InteractsWithStorage.js'
+
 export default {
+  mixins: [
+    InteractsWithStorage,
+  ],
+
   components: {
     MdxDeck,
+    PresenterMode,
     OverviewMode,
     GridMode,
   },
@@ -62,9 +70,9 @@ export default {
       return this.$store.state.mode
     },
     modeComponent() {
-      console.log(this.mode)
       return {
         normal: 'div',
+        presenter: 'presenter-mode',
         overview: 'overview-mode',
         grid: 'grid-mode',
       }[this.mode]
@@ -77,10 +85,12 @@ export default {
   mounted() {
     this.decks = this.$refs.markdown.$el.innerHTML.split('<hr>')
 
+    Mousetrap.bind('option+p', () => this.$store.commit('toggleMode', 'presenter'))
     Mousetrap.bind('option+o', () => this.$store.commit('toggleMode', 'overview'))
-    Mousetrap.bind('option+g', () => this.$store.commit('toggleMode', 'grid') )
+    Mousetrap.bind('option+g', () => this.$store.commit('toggleMode', 'grid'))
     Mousetrap.bind(['right', 'pagedown', 'space'], () => this.next())
     Mousetrap.bind(['left', 'pageup', 'shift+space'], () => this.previous())
+    Mousetrap.bind('esc', () => this.$store.commit('toggleMode', 'normal'))
   },
 
   methods: {

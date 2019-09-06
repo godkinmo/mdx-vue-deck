@@ -51,6 +51,7 @@ import HelloWold from './components/HelloWold'
 | ----------- | -------------------------------------------- |
 | Left Arrow, Page Up, Shift + Space | Go to previous slide                         |
 | Right Arrow, Page Down, Space | Go to next slide                             |
+| Option + P  | Toggle [Presenter Mode](#presenter-mode)       |
 | Option + O  | Toggle [Overview Mode](#overview-mode)       |
 | Option + G  | Toggle Grid Mode                             |
 
