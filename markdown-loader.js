@@ -2,7 +2,6 @@ const _ = require('lodash')
 
 module.exports = function (src) {
   src = src.replace('wrapper', 'div')
-  src = src.replace('mdxType="MDXLayout"', 'class="markdown"')
   src = src.replace(/inlineCode/g, 'code')
 
   // Transform markdown img tag

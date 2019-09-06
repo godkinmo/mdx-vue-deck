@@ -6,11 +6,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     currentPage: 1,
-    overview: false,
+    mode: 'normal',
   },
   mutations: {
-    toggleOverview(state) {
-      state.overview = !state.overview
+    toggleMode(state, next) {
+      state.mode = state.mode === next
+        ? 'normal'
+        : next
     },
     setCurrentPage(state, page) {
       state.currentPage = page

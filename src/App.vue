@@ -1,45 +1,45 @@
 <template>
-  <div class="flex flex-row">
+  <div class="h-screen">
     <mdx-deck ref="markdown" class="hidden" />
 
-    <overview-sidebar v-if="overview" :decks="decks" :page="page" class="w-1/6" @go-page="goPage" />
-
-    <div class="flex flex-col h-screen"
-      :class="[ overview ? 'w-5/6 pt-4 bg-black' : 'w-full']"
+    <component
+      :is="modeComponent"
+      :decks="decks"
+      :page="page"
+      @go-page="goPage"
+      class="h-full"
     >
       <div class="relative h-full overflow-hidden bg-gray-900">
         <transition :name="transitionName">
           <router-view :key="$route.name + ($route.params.page || '')" :page="page" :decks="decks">
           </router-view>
         </transition>
-      </div>
 
-      <div v-if="overview" class="bg-black p-4 text-right">
-        {{ page }} / {{ decks.length }}
+        <div v-if="mode==='normal'" class="fixed bottom-0 inset-x-0 mb-2 flex justify-center">
+          <button type="button" v-for="i in decks.length" :key="i" class="inline-block w-2 h-2 border-4 border-transparent p-1 rounded-full bg-green-500 cursor-default outline-none focus:shadow-outline-sm"
+            style="background-clip: padding-box;"
+            :class="[
+              i <= page ? 'opacity-50' : 'opacity-25',
+            ]"
+            @click="goPage(i)"
+          >
+          </button>
+        </div>
       </div>
-      <div v-else class="absolute bottom-0 w-full py-4 flex justify-center">
-        <button type="button" v-for="i in decks.length" :key="i" class="inline-block w-2 h-2 border-4 border-transparent p-1 rounded-full bg-white cursor-default outline-none focus:shadow-outline-sm"
-          style="background-clip: padding-box;"
-          :class="[
-            i <= page ? 'opacity-50' : 'opacity-25',
-          ]"
-          @click="goPage(i)"
-        >
-        </button>
-      </div>
-    </div>
+    </component>
   </div>
 </template>
 
 <script>
 import Mousetrap from 'mousetrap'
 import MdxDeck from '@/mdx/deck.mdx'
-import OverviewSidebar from '@/components/OverviewSidebar.vue'
+
+import OverviewMode from '@/components/OverviewMode.vue'
 
 export default {
   components: {
     MdxDeck,
-    OverviewSidebar,
+    OverviewMode,
   },
 
   data: () => ({
@@ -52,12 +52,19 @@ export default {
       const toPage = parseInt(to.params.page)
       const fromPage = parseInt(from.params.page)
       this.transitionName = toPage < fromPage ? 'slide-right' : 'slide-left'
-    }
+    },
   },
 
   computed: {
-    overview() {
-      return this.$store.state.overview
+    mode() {
+      return this.$store.state.mode
+    },
+    modeComponent() {
+      console.log(this.mode)
+      return {
+        normal: 'div',
+        overview: 'overview-mode',
+      }[this.mode]
     },
     page() {
       return parseInt(this.$route.params.page || 1)
@@ -68,15 +75,35 @@ export default {
     this.decks = this.$refs.markdown.$el.innerHTML.split('<hr>')
 
     Mousetrap.bind('option+o', () => {
-      this.$store.commit('toggleOverview')
+      this.$store.commit('toggleMode', 'overview')
+    })
+
+    window.addEventListener('keydown', this.keydownHandler)
+
+    this.$on('hook:destroyed', () => {
+      window.removeEventListener('keydown', this.keydownHandler)
     })
   },
 
   methods: {
     goPage(page) {
+      if (this.mode === 'grid') {
+        this.$store.commit('toggleMode', 'normal')
+      }
       this.$router.push({ name: 'home', params: { page }})
     },
-  }
+    keydownHandler(e) {
+      if (e.key === 'ArrowRight') {
+        if (this.page < this.decks.length) {
+          this.$router.push({ name: 'home', params: { page: this.page+1}})
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (this.page > 1) {
+          this.$router.push({ name: 'home', params: { page: this.page-1}})
+        }
+      }
+    },
+  },
 }
 </script>
 
