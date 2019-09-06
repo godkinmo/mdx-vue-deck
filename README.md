@@ -52,6 +52,6 @@ import HelloWold from './components/HelloWold'
 | Left Arrow  | Go to previous slide                         |
 | Right Arrow | Go to next slide                             |
 | Option + O  | Toggle [Overview Mode](#overview-mode)       |
-
+| Option + G  | Toggle Grid Mode                             |
 
 [mdx]: https://mdxjs.com/

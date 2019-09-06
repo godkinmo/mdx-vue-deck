@@ -35,11 +35,13 @@ import Mousetrap from 'mousetrap'
 import MdxDeck from '@/mdx/deck.mdx'
 
 import OverviewMode from '@/components/OverviewMode.vue'
+import GridMode from '@/components/GridMode.vue'
 
 export default {
   components: {
     MdxDeck,
     OverviewMode,
+    GridMode,
   },
 
   data: () => ({
@@ -64,6 +66,7 @@ export default {
       return {
         normal: 'div',
         overview: 'overview-mode',
+        grid: 'grid-mode',
       }[this.mode]
     },
     page() {
@@ -76,6 +79,9 @@ export default {
 
     Mousetrap.bind('option+o', () => {
       this.$store.commit('toggleMode', 'overview')
+    })
+    Mousetrap.bind('option+g', () => {
+      this.$store.commit('toggleMode', 'grid')
     })
 
     window.addEventListener('keydown', this.keydownHandler)
