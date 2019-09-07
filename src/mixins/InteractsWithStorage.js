@@ -4,17 +4,15 @@ const keys = {
 
 export default {
   data: () => ({
-    focused: false,
+    focused: true,
   }),
 
   mounted() {
-    window.addEventListener('storage', this.handleStorageChange)
     window.addEventListener('focus', this.handleFocus)
     window.addEventListener('blur', this.handleBlur)
   },
 
   beforeDestroy() {
-    window.removeEventListener('storage', this.handleStorageChange)
     window.removeEventListener('focus', this.handleFocus)
     window.removeEventListener('blur', this.handleBlur)
   },
@@ -23,6 +21,16 @@ export default {
     '$store.state.currentPage'(page) {
       if (!this.focused) return
       localStorage.setItem(keys.page, page)
+    },
+    focused: {
+      immediate: true,
+      handler(focused) {
+        if (!focused){
+          window.addEventListener('storage', this.handleStorageChange)
+        } else {
+          window.removeEventListener('storage', this.handleStorageChange)
+        }
+      }
     },
   },
 
@@ -35,7 +43,9 @@ export default {
     },
     handleStorageChange(e) {
       const n = parseInt(e.newValue, 10)
+
       if (isNaN(n)) return
+
       switch (e.key) {
         case keys.page:
           this.$router.push({ name: 'home', params: { page: n }})
