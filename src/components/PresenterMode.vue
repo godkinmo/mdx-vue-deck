@@ -7,7 +7,7 @@
       <div class="w-1/4">
         <div class="relative pb-7/12 overflow-hidden bg-gray-900">
           <div class="absolute markdown pointer-events-none"
-            v-html="decks[page]"
+            v-html="walls[page]"
             style="width: 400%; height: 400%; transform: scale(.25); transform-origin: 0px 0px;"
           >
           </div>
@@ -15,13 +15,13 @@
       </div>
     </div>
     <div class="flex-shrink-0 h-24 p-8 font-mono tracking-widest">
-      {{ page }}/{{ decks.length }}
+      {{ page }}/{{ walls.length }}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['decks', 'page'],
+  props: ['walls', 'page'],
 }
 </script>

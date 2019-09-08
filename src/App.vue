@@ -1,22 +1,22 @@
 <template>
   <div class="h-screen">
-    <mdx-deck ref="markdown" class="hidden" />
+    <mdx-wall ref="markdown" class="hidden" />
 
     <component
       :is="modeComponent"
-      :decks="decks"
+      :walls="walls"
       :page="page"
       @go-page="goPage"
       class="h-full"
     >
       <div class="relative h-full overflow-hidden bg-gray-900">
         <transition :name="transitionName">
-          <router-view :key="$route.name + ($route.params.page || '')" :page="page" :decks="decks">
+          <router-view :key="$route.name + ($route.params.page || '')" :page="page" :walls="walls">
           </router-view>
         </transition>
 
         <div v-if="mode==='normal'" class="fixed bottom-0 inset-x-0 mb-2 flex justify-center">
-          <button type="button" v-for="i in decks.length" :key="i" class="inline-block w-2 h-2 border-4 border-transparent p-1 rounded-full bg-green-500 cursor-default outline-none focus:shadow-outline-sm"
+          <button type="button" v-for="i in walls.length" :key="i" class="inline-block w-2 h-2 border-4 border-transparent p-1 rounded-full bg-green-500 cursor-default outline-none focus:shadow-outline-sm"
             style="background-clip: padding-box;"
             :class="[
               i <= page ? 'opacity-50' : 'opacity-25',
@@ -32,7 +32,7 @@
 
 <script>
 import Mousetrap from 'mousetrap'
-import MdxDeck from '@/mdx/deck.mdx'
+import MdxWall from '@/mdx/wall.mdx'
 
 import PresenterMode from '@/components/PresenterMode.vue'
 import OverviewMode from '@/components/OverviewMode.vue'
@@ -46,7 +46,7 @@ export default {
   ],
 
   components: {
-    MdxDeck,
+    MdxWall,
     PresenterMode,
     OverviewMode,
     GridMode,
@@ -54,7 +54,7 @@ export default {
 
   data: () => ({
     transitionName: 'slide-left',
-    decks: [],
+    walls: [],
   }),
 
   watch: {
@@ -83,7 +83,7 @@ export default {
   },
 
   mounted() {
-    this.decks = this.$refs.markdown.$el.innerHTML.split('<hr>')
+    this.walls = this.$refs.markdown.$el.innerHTML.split('<hr>')
 
     Mousetrap.bind('option+p', () => this.$store.commit('toggleMode', 'presenter'))
     Mousetrap.bind('option+o', () => this.$store.commit('toggleMode', 'overview'))
@@ -101,7 +101,7 @@ export default {
       this.$router.push({ name: 'home', params: { page }})
     },
     next() {
-      if (this.page < this.decks.length) {
+      if (this.page < this.walls.length) {
         this.$router.push({ name: 'home', params: { page: this.page+1}})
       }
     },

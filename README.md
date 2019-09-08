@@ -1,4 +1,4 @@
-# VUE MDX Deck
+# VUE MDX Wall
 
 ## Project setup
 ```
@@ -20,10 +20,10 @@ yarn run build
 
 ![](./demo.gif)
 
-Modify an [MDX][] file in `src/mdx/deck.mdx` and separate each slide with `---`.
+Modify an [MDX][] file in `src/mdx/wall.mdx` and separate each slide with `---`.
 
 ````mdx
-# This is the title of my deck
+# This is the title of my wall
 
 ---
 
