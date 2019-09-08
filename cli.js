@@ -46,19 +46,23 @@ const cli = meow(
 )
 
 const [cmd, file] = cli.input
+
 const filename = file || cmd
 
 if (!filename) cli.showHelp(0)
 
+const srcPath = path.resolve(filename)
+const dstPath = path.join(__dirname,  'src/mdx/wall.mdx')
+
+if (! fs.existsSync(srcPath)) {
+  log.error(`${srcPath} does not exists`)
+  process.exit()
+}
 
 const linkFile = async () => {
   try {
-    const srcpath = path.resolve(filename)
-    const dstpath = path.join(__dirname,  'src/mdx/wall.mdx')
-
-    await fs.remove(dstpath)
-    await fs.ensureSymlink(srcpath, dstpath)
-    log('success!')
+    await fs.remove(dstPath)
+    await fs.ensureSymlink(srcPath, dstPath)
   } catch (err) {
     log.error(err)
   }
@@ -72,9 +76,6 @@ const vueCliService =  (...args) => {
     cwd: __dirname,
     stdio: 'inherit',
     preferLocal: true,
-    env: {
-      VUE_APP_MDX_SRC: path.resolve(filename),
-    },
   })
 }
 
