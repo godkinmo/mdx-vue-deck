@@ -72,9 +72,6 @@ const vueCliService =  (...args) => {
     cwd: __dirname,
     stdio: 'inherit',
     preferLocal: true,
-    env: {
-      VUE_APP_MDX_SRC: path.resolve(filename),
-    },
   })
 }
 
