@@ -1,6 +1,6 @@
 {
-  "name": "mdx-wall",
-  "version": "0.1.0",
+  "name": "mdx-vall",
+  "version": "0.1.2",
   "description": "MDX-based presentation walls",
   "bin": {
     "mdx-wall": "./cli.js"
