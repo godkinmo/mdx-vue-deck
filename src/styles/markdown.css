@@ -48,7 +48,7 @@
   }
 
   & > pre {
-    @apply font-mono rounded bg-black p-4 text-blue-400;
+    @apply font-mono rounded p-4 text-blue-400;
     font-weight: 400;
     scrollbar-width: none;
     &::-webkit-scrollbar {

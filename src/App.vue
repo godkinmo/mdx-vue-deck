@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div class="antialiased bg-black text-wall-text h-screen">
     <mdx-wall ref="markdown" class="hidden" />
 
     <component
@@ -16,13 +16,13 @@
         </transition>
 
         <div v-if="mode==='normal'" class="fixed bottom-0 inset-x-0 mb-2 flex justify-center">
-          <button type="button" v-for="i in walls.length" :key="i" class="inline-block w-2 h-2 border-4 border-transparent p-1 rounded-full bg-green-500 cursor-default outline-none focus:shadow-outline-sm"
-            style="background-clip: padding-box;"
-            :class="[
-              i <= page ? 'opacity-50' : 'opacity-25',
-            ]"
+          <button v-for="i in walls.length" :key="i"
+            type="button"
+            class="block p-1 border-2 border-transparent focus:border-green-500 rounded-full cursor-default focus:outline-none"
+            :class="[i <= page ? 'opacity-50' : 'opacity-25']"
             @click="goPage(i)"
           >
+            <span class="block w-2 h-2 bg-green-500 rounded-full"></span>
           </button>
         </div>
       </div>

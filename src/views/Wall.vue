@@ -42,11 +42,11 @@ export default {
     let newWalls = [[]]
 
     Array.from(this.$refs.wall.$el.children).forEach(el => {
-      if (el.outerHTML === '<hr>') {
+      if (el.outerHTML !== '<hr>') {
+        newWalls[wallPage-1].push(el)
+      } else {
         newWalls[wallPage] = []
         wallPage++
-      } else {
-        newWalls[wallPage-1].push(el)
       }
     })
 
@@ -54,7 +54,7 @@ export default {
 
     newWalls.forEach(wall => {
       const node = document.createElement('div')
-      const classList = 'markdown w-full h-full flex-shrink-0 flex flex-col items-center justify-center'
+      const classList = 'markdown w-full h-full flex-shrink-0 flex flex-col items-center justify-center overflow-hidden'
       classList.split(' ').forEach(c => node.classList.add(c))
 
       wall.forEach(el => node.appendChild(el))

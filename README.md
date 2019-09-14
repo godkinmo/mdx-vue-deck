@@ -1,4 +1,4 @@
-# VUE MDX Wall
+# MDX Wall
 
 ## Project setup
 ```
@@ -20,7 +20,7 @@ yarn run build
 
 ![](./demo.gif)
 
-Modify an [MDX][] file in `src/mdx/wall.mdx` and separate each slide with `---`.
+Modify an [MDX][mdx] file in `src/mdx/wall.mdx` and separate each slide with `---`.
 
 ````mdx
 # This is the title of my wall
@@ -44,15 +44,21 @@ import HelloWold from './components/HelloWold'
 # The end
 ````
 
-
 ## Keyboard Shortcuts
 
 | Key         | Description                                  |
 | ----------- | -------------------------------------------- |
-| Left Arrow, Page Up, Shift + Space | Go to previous slide                         |
-| Right Arrow, Page Down, Space | Go to next slide                             |
-| Option + P  | Toggle [Presenter Mode](#presenter-mode)       |
+| Left Arrow, Page Up, Shift + Space | Go to previous slide  |
+| Right Arrow, Page Down, Space | Go to next slide           |
+| Option + P  | Toggle [Presenter Mode](#presenter-mode)     |
 | Option + O  | Toggle [Overview Mode](#overview-mode)       |
 | Option + G  | Toggle Grid Mode                             |
+
+
+## References
+[mdx-deck](https://github.com/jxnblk/mdx-deck)
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 
 [mdx]: https://mdxjs.com/

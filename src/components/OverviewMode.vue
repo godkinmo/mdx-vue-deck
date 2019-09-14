@@ -2,8 +2,9 @@
   <div class="flex flex-row">
     <ul ref="walls" class="h-screen w-1/6 overflow-auto pt-4">
       <li v-for="(wall, i) in walls" :key="i" class="px-4 mb-4">
-        <div class="relative pb-7/12 border-4 cursor-pointer overflow-hidden bg-gray-900"
+        <div class="relative border-4 cursor-pointer overflow-hidden bg-gray-900"
           :class="[ page === i+1 ? 'border-blue-500' : 'border-transparent' ]"
+          style="padding-bottom: 56.25%"
           @click="$emit('go-page', i+1)"
         >
           <div class="absolute markdown pointer-events-none"
