@@ -6,7 +6,7 @@ module.exports = {
     ['prismjs', {
       'languages': ['javascript', 'css', 'clike', 'bash', 'css-extras', 'diff', 'php', 'jsx'],
       'plugins': ['line-numbers'],
-      'theme': 'default', // deafult, okaidia
+      // 'theme': 'default', // deafult, okaidia
       'css': true
     }]
   ]

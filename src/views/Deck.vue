@@ -54,7 +54,7 @@ export default {
 
     newDecks.forEach(deck => {
       const node = document.createElement('div')
-      const classList = 'markdown w-full h-full flex-shrink-0 flex flex-col items-center justify-center overflow-hidden'
+      const classList = 'markdown w-full h-full flex-shrink-0'
       classList.split(' ').forEach(c => node.classList.add(c))
 
       deck.forEach(el => node.appendChild(el))

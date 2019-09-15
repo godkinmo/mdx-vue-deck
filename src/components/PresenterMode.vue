@@ -5,7 +5,7 @@
         <slot />
       </div>
       <div class="w-1/4">
-        <div class="relative overflow-hidden bg-gray-900" style="padding-bottom: 56.25%">
+        <div class="relative overflow-hidden" style="padding-bottom: 56.25%">
           <div class="absolute markdown pointer-events-none"
             v-html="decks[page]"
             style="width: 400%; height: 400%; transform: scale(.25); transform-origin: 0px 0px;"
@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="flex-shrink-0 h-24 p-8 font-mono tracking-widest">
+    <div class="flex-shrink-0 h-24 p-8 text-white font-bold font-mono tracking-widest">
       {{ page }}/{{ decks.length }}
     </div>
   </div>

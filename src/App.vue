@@ -9,7 +9,7 @@
       @go-page="goPage"
       class="h-full"
     >
-      <div class="relative h-full overflow-hidden bg-gray-900">
+      <div class="relative h-full overflow-hidden bg-theme-background">
         <transition :name="transitionName">
           <router-view :key="$route.name + ($route.params.page || '')" :page="page" :decks="decks">
           </router-view>

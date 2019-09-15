@@ -26,3 +26,12 @@ export function info(...msgs) {
 export function error(...msgs) {
   return chalk.bold.red(...msgs)
 }
+
+/**
+ * Applies colors to represent a file
+ *
+ * @param {...string} msgs
+ */
+export function file(...msgs) {
+  return chalk.bold.magenta(...msgs)
+}

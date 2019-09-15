@@ -5517,7 +5517,7 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
-node-emoji@^1.8.1:
+node-emoji@^1.10.0, node-emoji@^1.8.1:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/node-emoji/-/node-emoji-1.10.0.tgz#8886abd25d9c7bb61802a658523d1f8d2a89b2da"
   integrity sha512-Yt3384If5H6BYGVHiHwTL+99OzJKHhgp82S8/dktEK73T26BazdgZ4JZh92xSVtGNJvz9UbXdNAc5hcrXV42vw==
@@ -7883,6 +7883,13 @@ svgo@^1.0.0:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+tailwindcss-typography@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-typography/-/tailwindcss-typography-2.2.0.tgz#7e555f25f1870e39c0013eb746ce365761a9680f"
+  integrity sha512-/v+G9iXkR6Vfj7N2D8bWKrV+kh7mKxDpoTC/RX4+O5mxcJ/Jmep98MJe2Uh9uxHrH4Hh27qeOME7vtJBjpn6iA==
+  dependencies:
+    lodash "^4.17.15"
 
 tailwindcss@^1.1.2:
   version "1.1.2"
