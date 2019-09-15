@@ -1,4 +1,4 @@
-# MDX Wall
+# MDX Deck
 
 ## Project setup
 ```
@@ -20,10 +20,10 @@ yarn run build
 
 ![](./demo.gif)
 
-Modify an [MDX][mdx] file in `src/mdx/wall.mdx` and separate each slide with `---`.
+Modify an [MDX][mdx] file in `src/mdx/deck.mdx` and separate each slide with `---`.
 
 ````mdx
-# This is the title of my wall
+# This is the title of my deck
 
 ---
 

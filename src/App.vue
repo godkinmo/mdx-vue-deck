@@ -1,22 +1,22 @@
 <template>
-  <div class="antialiased bg-black text-wall-text h-screen">
-    <mdx-wall ref="markdown" class="hidden" />
+  <div class="antialiased bg-black h-screen">
+    <mdx-deck ref="markdown" class="hidden" />
 
     <component
       :is="modeComponent"
-      :walls="walls"
+      :decks="decks"
       :page="page"
       @go-page="goPage"
       class="h-full"
     >
       <div class="relative h-full overflow-hidden bg-gray-900">
         <transition :name="transitionName">
-          <router-view :key="$route.name + ($route.params.page || '')" :page="page" :walls="walls">
+          <router-view :key="$route.name + ($route.params.page || '')" :page="page" :decks="decks">
           </router-view>
         </transition>
 
         <div v-if="mode==='normal'" class="fixed bottom-0 inset-x-0 mb-2 flex justify-center">
-          <button v-for="i in walls.length" :key="i"
+          <button v-for="i in decks.length" :key="i"
             type="button"
             class="block p-1 border-2 border-transparent focus:border-green-500 rounded-full cursor-default focus:outline-none"
             :class="[i <= page ? 'opacity-50' : 'opacity-25']"
@@ -32,7 +32,7 @@
 
 <script>
 import Mousetrap from 'mousetrap'
-import MdxWall from '@/mdx/wall.mdx'
+import MdxDeck from '@/mdx/deck.mdx'
 
 import PresenterMode from '@/components/PresenterMode.vue'
 import OverviewMode from '@/components/OverviewMode.vue'
@@ -46,7 +46,7 @@ export default {
   ],
 
   components: {
-    MdxWall,
+    MdxDeck,
     PresenterMode,
     OverviewMode,
     GridMode,
@@ -54,7 +54,7 @@ export default {
 
   data: () => ({
     transitionName: 'slide-left',
-    walls: [],
+    decks: [],
   }),
 
   watch: {
@@ -83,7 +83,7 @@ export default {
   },
 
   mounted() {
-    this.walls = this.$refs.markdown.$el.innerHTML.split('<hr>')
+    this.decks = this.$refs.markdown.$el.innerHTML.split('<hr>')
 
     Mousetrap.bind('option+p', () => this.$store.commit('toggleMode', 'presenter'))
     Mousetrap.bind('option+o', () => this.$store.commit('toggleMode', 'overview'))
@@ -101,7 +101,7 @@ export default {
       this.$router.push({ name: 'home', params: { page }})
     },
     next() {
-      if (this.page < this.walls.length) {
+      if (this.page < this.decks.length) {
         this.$router.push({ name: 'home', params: { page: this.page+1}})
       }
     },

@@ -1,5 +1,5 @@
 const keys = {
-  page: 'mdx-wall-page',
+  page: 'mdx-deck-page',
 }
 
 export default {

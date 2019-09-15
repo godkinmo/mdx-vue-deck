@@ -1,37 +1,14 @@
 @import "tailwindcss/base";
 
 /* Add custom base styles here... */
-@import "./base-style.css";
 
 @import "tailwindcss/components";
 
 /* purgecss start ignore */
 @import "./components/transitions.css";
-@import "./prism-atom-dark.css";
-@import "./markdown.css";
+/*@import "./prism-atom-dark.css";*/
+/*@import "./markdown.css";*/
 /* purgecss end ignore */
 
 @import "tailwindcss/utilities";
 @import "./utilities/transitions.css";
-
-.scrollbar-none {
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none !important;
-  }
-}
-.scrollbar-w-2::-webkit-scrollbar {
-  @apply w-2 h-2 !important;
-}
-.scrollbar-track-gray-lighter::-webkit-scrollbar-track {
-  @apply bg-gray-300 !important;
-}
-.scrollbar-thumb-gray::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 !important;
-}
-.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
-  @apply rounded !important;
-}
-.table-collapse {
-  border-collapse: collapse !important;
-}

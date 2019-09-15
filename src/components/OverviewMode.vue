@@ -1,14 +1,14 @@
 <template>
   <div class="flex flex-row">
-    <ul ref="walls" class="h-screen w-1/6 overflow-auto pt-4">
-      <li v-for="(wall, i) in walls" :key="i" class="px-4 mb-4">
+    <ul ref="decks" class="h-screen w-1/6 overflow-auto pt-4">
+      <li v-for="(deck, i) in decks" :key="i" class="px-4 mb-4">
         <div class="relative border-4 cursor-pointer overflow-hidden bg-gray-900"
           :class="[ page === i+1 ? 'border-blue-500' : 'border-transparent' ]"
           style="padding-bottom: 56.25%"
           @click="$emit('go-page', i+1)"
         >
           <div class="absolute markdown pointer-events-none"
-            v-html="walls[i]"
+            v-html="decks[i]"
             style="width: 600%; height: 600%; transform: scale(0.166667); transform-origin: 0px 0px;"
           >
           </div>
@@ -20,7 +20,7 @@
       <slot />
 
       <div class="p-4 text-right">
-        {{ page }} / {{ walls.length }}
+        {{ page }} / {{ decks.length }}
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  props: ['walls', 'page'],
+  props: ['decks', 'page'],
 
   watch: {
     page(val) {
@@ -44,7 +44,7 @@ export default {
 
   methods: {
     scrollToHighlighted(index, block='nearest') {
-      this.$refs.walls.children[index].scrollIntoView({
+      this.$refs.decks.children[index].scrollIntoView({
         block
       })
     },

@@ -1,7 +1,7 @@
 <template>
   <div class="absolute inset-0 overflow-hidden">
-    <mdx-wall
-      ref="wall"
+    <mdx-deck
+      ref="deck"
       class="flex flex-row justify-start w-full h-full transition-transform transition-normal"
       :style="styleObj"
     />
@@ -10,14 +10,14 @@
 
 <script>
 import Prism from 'prismjs'
-import MdxWall from '@/mdx/wall.mdx'
+import MdxDeck from '@/mdx/deck.mdx'
 
 export default {
   components: {
-    MdxWall,
+    MdxDeck,
   },
 
-  props: ['page', 'walls'],
+  props: ['page', 'decks'],
 
   computed: {
     styleObj() {
@@ -38,28 +38,28 @@ export default {
 
     Prism.highlightAll()
 
-    let wallPage = 1
-    let newWalls = [[]]
+    let deckPage = 1
+    let newDecks = [[]]
 
-    Array.from(this.$refs.wall.$el.children).forEach(el => {
+    Array.from(this.$refs.deck.$el.children).forEach(el => {
       if (el.outerHTML !== '<hr>') {
-        newWalls[wallPage-1].push(el)
+        newDecks[deckPage-1].push(el)
       } else {
-        newWalls[wallPage] = []
-        wallPage++
+        newDecks[deckPage] = []
+        deckPage++
       }
     })
 
-    this.$refs.wall.$el.innerHTML = ''
+    this.$refs.deck.$el.innerHTML = ''
 
-    newWalls.forEach(wall => {
+    newDecks.forEach(deck => {
       const node = document.createElement('div')
       const classList = 'markdown w-full h-full flex-shrink-0 flex flex-col items-center justify-center overflow-hidden'
       classList.split(' ').forEach(c => node.classList.add(c))
 
-      wall.forEach(el => node.appendChild(el))
+      deck.forEach(el => node.appendChild(el))
 
-      this.$refs.wall.$el.append(node)
+      this.$refs.deck.$el.append(node)
     })
   },
 }

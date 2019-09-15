@@ -1,8 +1,8 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Wall from './views/Wall.vue';
+import Vue from 'vue'
+import Router from 'vue-router'
+import Deck from './views/Deck.vue'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   mode: 'hash',
@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/:page?',
       name: 'home',
-      component: Wall,
+      component: Deck,
     },
   ],
-});
+})
