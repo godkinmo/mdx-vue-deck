@@ -5,10 +5,10 @@ module.exports = {
   ],
   plugins: [
     ['prismjs', {
-      'languages': ['javascript', 'css', 'clike', 'bash', 'css-extras', 'diff', 'php', 'jsx'],
-      'plugins': ['line-numbers'],
-      // 'theme': 'default', // deafult, okaidia
-      'css': true
+      languages: ['javascript', 'css', 'clike', 'bash', 'css-extras', 'php', 'jsx', 'diff'],
+      plugins: ['line-numbers'],
+      // theme: 'okaidia',
+      css: true
     }]
   ]
 };

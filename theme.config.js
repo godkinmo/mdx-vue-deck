@@ -1,9 +1,24 @@
 module.exports = {
+  extend: {
+    colors: {
+      theme: {
+        text: '#FFFFFF',
+        background: '#1A202C',
+      },
+      code: {
+        green: '#b5f4a5',
+        yellow: '#ffe484',
+        purple: '#d9a9ff',
+        red: '#ff8383',
+        blue: '#93ddfd',
+        white: '#fff',
+      },
+    },
+  },
   // https://github.com/benface/tailwindcss-typography
   textStyles: theme => ({
     heading: {
       output: false,
-      color: theme('colors.black'),
       fontWeight: theme('fontWeight.bold'),
       lineHeight: theme('lineHeight.tight'),
     },
@@ -36,7 +51,7 @@ module.exports = {
       overflow: 'hidden',
       fontWeight: theme('fontWeight.normal'),
       fontSize: '32px',
-      color: theme('colors.black'),
+      color: theme('colors.theme.text'),
       lineHeight: theme('lineHeight.relaxed'),
       '> * + *': {
         marginTop: '1.5rem',
@@ -69,12 +84,12 @@ module.exports = {
       },
       'pre[class*=language-]': {
         padding: '1rem',
-        fontSize: theme('fontSize.3xl'),
+        fontSize: theme('fontSize.base'),
         fontFamily: theme('fontFamily.mono'),
         fontWeight: theme('fontWeight.normal'),
         lineHeight: theme('lineHeight.normal'),
-        backgroundColor: theme('colors.black'),
-        color: theme('colors.blue.400'),
+        backgroundColor: theme('colors.gray.800'),
+        color: theme('colors.gray.200'),
         whitespace: 'nowrap',
         scrollbarWidth: 'none',
       },
@@ -83,19 +98,4 @@ module.exports = {
       }
     },
   }),
-  extend: {
-    colors: {
-      theme: {
-        background: '#fff',
-      },
-      code: {
-        green: '#b5f4a5',
-        yellow: '#ffe484',
-        purple: '#d9a9ff',
-        red: '#ff8383',
-        blue: '#93ddfd',
-        white: '#fff',
-      },
-    },
-  },
 }

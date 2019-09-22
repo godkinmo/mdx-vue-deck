@@ -1,5 +1,5 @@
 module.exports = {
-  important: true,
+  important: false,
   theme: require(process.env.__TAILWIND_THEME_CONFIG_PATH__),
   plugins: [
     require('tailwindcss-typography')({

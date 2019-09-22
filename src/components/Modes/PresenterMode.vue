@@ -5,7 +5,7 @@
         <slot />
       </div>
       <div class="w-1/4">
-        <div class="relative overflow-hidden" style="padding-bottom: 56.25%">
+        <div v-if="page < decks.length" class="relative overflow-hidden" style="padding-bottom: 56.25%">
           <div class="absolute markdown pointer-events-none"
             v-html="decks[page]"
             style="width: 400%; height: 400%; transform: scale(.25); transform-origin: 0px 0px;"

@@ -1,3 +1,11 @@
+import BGImage from '@/components/BGIameg.js'
+import CodeSample from '@/components/CodeSample.js'
+import Split from '@/layouts/Split'
+
+export const prism = {
+    languages: ['php'],
+}
+
 # VUE MDX DECK
 
 ## Vue version MDX-based presentation decks
@@ -5,6 +13,31 @@
 ---
 
 # PRESENTATION DECKS
+
+---
+
+<h1>BUILT WITH <a href="https://github.com/mdx-js/mdx" target="_blank">MDX</a></h1>
+
+---
+
+# List
+
+I go to school by bus
+
+- Make bulleted lists
+
+    - 1
+    - 2
+    - 3
+    - 4
+
+- To help make your point
+
+---
+
+```
+<button>code example</button>
+```
 
 ---
 
@@ -17,3 +50,46 @@ export default {
     }
 }
 ```
+
+---
+
+```diff
++ <div class="z-40 ml-0 mt-0 bg-gray-400">z-40</div>
+- <div class="z-30 ml-2 mt-2 bg-gray-500">z-30</div>
+  <div class="z-20 ml-4 mt-4 bg-gray-600">z-20</div>
+  <div class="z-10 ml-6 mt-6 bg-gray-700">z-10</div>
+  <div class="z-0 ml-8 mt-8 bg-gray-800">z-0</div>
+```
+
+---
+
+# Code Sample Component
+
+<CodeSample lineNumbers={true}>
+  <div class="relative h-32 text-center">
+    <div class="z-40 absolute w-24 h-24 ml-0 mt-0 bg-gray-400 flex justify-center items-center">z-40</div>
+    <div class="z-30 absolute w-24 h-24 ml-2 mt-2 bg-gray-500 flex justify-center items-center">z-30</div>
+    <div class="z-20 absolute w-24 h-24 ml-4 mt-4 bg-gray-600 flex justify-center items-center">z-20</div>
+    <div class="z-10 absolute w-24 h-24 ml-6 mt-6 bg-gray-700 flex justify-center items-center">z-10</div>
+    <div class="z-0 absolute w-24 h-24 ml-8 mt-8 bg-gray-800 flex justify-center items-center">z-0</div>
+  </div>
+</CodeSample>
+
+---
+
+![](https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1054&q=80)
+
+---
+
+
+<Split>
+
+![](https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1054&q=80)
+
+# SPLIT LAYOUT
+
+</Split>
+
+---
+
+<BGImage src="/images/think.gif" />

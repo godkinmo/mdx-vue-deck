@@ -34,9 +34,9 @@
 import Mousetrap from 'mousetrap'
 import MdxDeck from '@/mdx/deck.mdx'
 
-import PresenterMode from '@/components/PresenterMode.vue'
-import OverviewMode from '@/components/OverviewMode.vue'
-import GridMode from '@/components/GridMode.vue'
+import PresenterMode from '@/components/Modes/PresenterMode.vue'
+import OverviewMode from '@/components/Modes/OverviewMode.vue'
+import GridMode from '@/components/Modes/GridMode.vue'
 
 import InteractsWithStorage from '@/mixins/InteractsWithStorage.js'
 

@@ -5,6 +5,7 @@ import { copySync, ensureSymlinkSync, existsSync, removeSync } from 'fs-extra'
 import * as colors from './colors'
 import * as emoji from './emoji'
 import packageJson from '../../package.json'
+import { deckMdxFile } from '../constants'
 
 /**
  * Prints messages to console.
@@ -91,4 +92,21 @@ export function vueCliService(...args) {
     stdio: 'inherit',
     preferLocal: true,
   })
+}
+
+export function prepareVueCliService({ flags }, filename) {
+  if (flags.config) {
+    const tailwindThemeConfig = path.resolve(flags.config)
+    !exists(tailwindThemeConfig) && die(colors.file(flags.config), 'does not exists')
+
+    process.env.__TAILWIND_THEME_CONFIG_PATH__ = tailwindThemeConfig
+  } else {
+    process.env.__TAILWIND_THEME_CONFIG_PATH__ = path.resolve('./theme.config.js')
+  }
+
+  const source = path.resolve(filename)
+
+  !exists(source) && die(colors.file(filename), 'does not exists.')
+
+  symlinkFile(source, deckMdxFile)
 }

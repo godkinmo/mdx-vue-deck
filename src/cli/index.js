@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 import meow from 'meow'
-import pkg from '../package.json'
-import commands from './cli/commands'
-import * as colors from './cli/colors'
-import * as utils from './cli/utils'
+import pkg from '../../package.json'
+import commands from './commands'
+import * as colors from './colors'
 
 const cli = meow(
 `
@@ -55,12 +54,6 @@ if (cli.input.length === 0) {
   cli.showHelp(0)
 }
 
-if (['dev', 'build'].includes(cmd)) {
-  if (typeof filename === 'undefined') {
-    cli.showHelp(0)
-  }
+process.env.__TAILWIND_THEME_CONFIG_PATH__ = './theme.config.js'
 
-  utils.prepareVueCliService(cli, filename)
-}
-
-commands[cmd].run(cli)
+commands[cmd].run(cli, filename)

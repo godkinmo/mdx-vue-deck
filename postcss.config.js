@@ -17,6 +17,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
 module.exports = {
   plugins: [
     require('postcss-import'),
+    // Watching theme file for changes
     function (css, opts) {
       const resolvedPath = process.env.__TAILWIND_THEME_CONFIG_PATH__
 
