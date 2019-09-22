@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 
 import meow from 'meow'
-import pkg from './package.json'
+import pkg from '../package.json'
 import commands from './cli/commands'
-
 import * as colors from './cli/colors'
 
 const cli = meow(
-  `
+`
   mdx-vue-deck ${colors.info(pkg.version)}
 
   Usage:
@@ -49,18 +48,12 @@ const cli = meow(
 )
 
 const cmd = cli.input[0]
-const file = cli.input[1]
+const filename = cli.input[1]
 
-const filename = file || cmd
+if (cli.input.length === 0) {
+  cli.showHelp(0)
+}
 
-if (!filename) cli.showHelp(0)
+process.env.__TAILWIND_THEME_CONFIG_PATH__ = './theme.config.js'
 
-const command = {
-  dev: 'dev',
-  build: 'build',
-  eject: 'eject',
-}[cmd] || 'dev'
-
-process.env.__TAILWIND_CONFIG_PATH__ = './tailwind.config.js'
-
-commands[command].run(cli, filename)
+commands[cmd].run(cli, filename)

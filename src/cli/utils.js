@@ -4,7 +4,7 @@ import { copySync, ensureSymlinkSync, existsSync, removeSync } from 'fs-extra'
 
 import * as colors from './colors'
 import * as emoji from './emoji'
-import packageJson from '../package.json'
+import packageJson from '../../package.json'
 
 /**
  * Prints messages to console.
@@ -87,7 +87,7 @@ export function symlinkFile(source, destination) {
  */
 export function vueCliService(...args) {
   return execa('vue-cli-service', args.filter(Boolean), {
-    cwd: path.resolve(__dirname, '../'),
+    cwd: path.resolve(__dirname, '../../'),
     stdio: 'inherit',
     preferLocal: true,
   })
