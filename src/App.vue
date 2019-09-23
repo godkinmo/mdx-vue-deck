@@ -63,11 +63,20 @@ export default {
       const fromPage = parseInt(from.params.page)
       this.transitionName = toPage < fromPage ? 'slide-right' : 'slide-left'
     },
+    '$store.state.step' (step) {
+      history.pushState({}, '', `/#/${this.page}${step ? `.${step}`: ''}`);
+    },
   },
 
   computed: {
     mode() {
       return this.$store.state.mode
+    },
+    steps() {
+      return this.$store.state.steps
+    },
+    step() {
+      return this.$store.state.step || 0
     },
     modeComponent() {
       return {
@@ -85,6 +94,9 @@ export default {
   mounted() {
     this.decks = this.$refs.markdown.$el.innerHTML.split('<hr>')
 
+    const step = parseInt(this.$route.params.page.split('.')[1] || 0)
+    this.$store.commit('setStep', step)
+
     Mousetrap.bind('option+p', () => this.$store.commit('toggleMode', 'presenter'))
     Mousetrap.bind('option+o', () => this.$store.commit('toggleMode', 'overview'))
     Mousetrap.bind('option+g', () => this.$store.commit('toggleMode', 'grid'))
@@ -98,18 +110,35 @@ export default {
       if (this.mode === 'grid') {
         this.$store.commit('toggleMode', 'normal')
       }
+      if (this.page === page) return
       this.$router.push({ name: 'home', params: { page }})
+      this.$store.commit('setStep', 0)
     },
     next() {
-      if (this.page < this.decks.length) {
-        this.$router.push({ name: 'home', params: { page: this.page+1}})
+      if (this.steps > 0 && this.step < this.steps) {
+        return this.$store.commit('increaseStep')
       }
+      this.nextSlide()
+    },
+    nextSlide() {
+      if (this.page >= this.decks.length) return
+      this.$router.push({ name: 'home', params: { page: this.page + 1 } })
+      this.$store.commit('setStep', 0)
     },
     previous() {
-      if (this.page > 1) {
-        this.$router.push({ name: 'home', params: { page: this.page-1}})
+      if (this.steps && this.step > 0) {
+        return this.$store.commit('decreaseStep')
       }
+      this.previousSlide()
     },
+    previousSlide() {
+      if (this.page <= 1) return
+      this.$router.push({ name: 'home', params: { page: this.page - 1 } })
+
+      setTimeout(() => {
+        this.$store.commit('setStep', this.steps)
+      }, 0)
+    }
   },
 }
 </script>

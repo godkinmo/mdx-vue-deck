@@ -2,6 +2,7 @@
 node_modules
 /dist
 /lib
+/src/mdx/deck.mdx
 
 # local env files
 .env.local

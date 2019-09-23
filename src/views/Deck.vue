@@ -38,29 +38,35 @@ export default {
 
     Prism.highlightAll()
 
-    let deckPage = 1
-    let newDecks = [[]]
-
-    Array.from(this.$refs.deck.$el.children).forEach(el => {
-      if (el.outerHTML !== '<hr>') {
-        newDecks[deckPage-1].push(el)
-      } else {
-        newDecks[deckPage] = []
-        deckPage++
-      }
-    })
-
-    this.$refs.deck.$el.innerHTML = ''
-
-    newDecks.forEach(deck => {
-      const node = document.createElement('div')
-      const classList = 'markdown w-full h-full flex-shrink-0'
-      classList.split(' ').forEach(c => node.classList.add(c))
-
-      deck.forEach(el => node.appendChild(el))
-
-      this.$refs.deck.$el.append(node)
-    })
+    this.transformMdxDom()
   },
+
+  methods: {
+    transformMdxDom() {
+      let deckPage = 1
+      let newDecks = [[]]
+
+      Array.from(this.$refs.deck.$el.children).forEach(el => {
+        if (el.outerHTML !== '<hr>') {
+          newDecks[deckPage-1].push(el)
+        } else {
+          newDecks[deckPage] = []
+          deckPage++
+        }
+      })
+
+      this.$refs.deck.$el.innerHTML = ''
+
+      newDecks.forEach(deck => {
+        const node = document.createElement('div')
+        const classList = 'markdown w-full h-full flex-shrink-0'
+        classList.split(' ').forEach(c => node.classList.add(c))
+
+        deck.forEach(el => node.appendChild(el))
+
+        this.$refs.deck.$el.append(node)
+      })
+    },
+  }
 }
 </script>
