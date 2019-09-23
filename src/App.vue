@@ -94,8 +94,7 @@ export default {
   mounted() {
     this.decks = this.$refs.markdown.$el.innerHTML.split('<hr>')
 
-    const step = parseInt(this.$route.params.page.split('.')[1] || 0)
-    this.$store.commit('setStep', step)
+    this.$store.commit('setStep', parseInt(location.hash.split('.')[1] || 0))
 
     Mousetrap.bind('option+p', () => this.$store.commit('toggleMode', 'presenter'))
     Mousetrap.bind('option+o', () => this.$store.commit('toggleMode', 'overview'))
