@@ -1,11 +1,8 @@
 import Appear from '@/components/Appear'
 import BGImage from '@/components/BGImage'
 import CodeSample from '@/components/CodeSample'
+import CodeSurfer from '@/components/CodeSurfer'
 import Split from '@/layouts/Split'
-
-export const prism = {
-    languages: ['php'],
-}
 
 # MDX VUE DECK
 
@@ -104,19 +101,46 @@ export default {
 
 ---
 
-# Appear
-
-<Appear>
-  <li class="text-blue-700">One</li>
-  <li>Two</li>
-  <li>Three</li>
-  <li>Three</li>
-  <li>Three</li>
-  <li>Three</li>
-  <li>Three</li>
-  <li>Three</li>
-</Appear>
+<CodeSurfer
+  lang="javascript"
+  steps={[
+    { lines: [3], notes: 'Import the Apollo Client' },
+    { lines: [4], notes: 'Import Vue Apollo for using Apollo with vue' },
+    {
+      lines: [7, 8, 9, 10, 11],
+      notes: 'Create the provider and give it the URL'
+    },
+    { lines: [14], notes: 'Tell Vue to use Apollo' },
+    { lines: [15, 16, 17, 18, 19], notes: 'Mount Vue' }
+  ]}
+  code={`
+import Vue from "vue"
+import App from "./App"
+import ApolloClient from "apollo-boost"
+import VueApollo from "vue-apollo"
+\n
+const apolloProvider = new VueApollo({
+  defaultClient: new ApolloClient({
+    uri: "https://api.graphcms.com/simple/v1/awesomeTalksClone"
+  })
+})
+\n
+Vue.use(VueApollo)
+new Vue({
+  el: "#app",
+  provide: apolloProvider.provide(),
+  render: h => h(App)
+})
+  `}
+/>
 
 ---
 
-# END
+# Table
+
+|Month|Savings|Spending|
+|--- |--- |--- |
+|January|$100|$900|
+|July|$750|$1000|
+|December|$250|$300|
+|April|$400|$700|
