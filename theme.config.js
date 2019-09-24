@@ -95,6 +95,28 @@ module.exports = {
       },
       'pre[class*=language-]::-webkit-scrollbar': {
         display: 'none',
+      },
+      'table': {
+        width: '50%',
+        textAlign: 'left',
+        borderCollapse: 'collapse',
+        overflow: 'x-scroll',
+      },
+      'table th, table td': {
+        minWidth: '200px',
+      },
+      'table th': {
+        fontSize: theme('fontSize.lg'),
+        fontWeight: theme('fontWeight.semibold'),
+        padding: '.5rem',
+        color: theme('colors.gray.900'),
+        backgroundColor: theme('colors.gray.300'),
+      },
+      'table td': {
+        fontSize: theme('fontSize.lg'),
+        padding: '.5rem',
+        borderWidth: '1px',
+        borderColor: theme('colors.gray.400'),
       }
     },
   }),
