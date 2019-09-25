@@ -1,6 +1,6 @@
 {
   "name": "mdx-vue-deck",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MDX-based presentation decks",
   "repository": "https://github.com/godkinmo/mdx-vue-deck.git",
   "bin": {
@@ -9,7 +9,6 @@
   "main": "lib/index.js",
   "author": "Jack Fong",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "babelify": "babel src --out-dir lib --copy-files",
     "start": "babel-node src/cli.js dev hello.mdx",
