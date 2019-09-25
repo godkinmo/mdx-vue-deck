@@ -24,6 +24,9 @@
           >
             <span class="block w-2 h-2 bg-green-500 rounded-full"></span>
           </button>
+
+          <div role="button" class="fixed w-16 h-full top-0 left-0" title="Previous Slide" @click="previous"></div>
+          <div role="button" class="fixed w-16 h-full top-0 right-0" title="Next Slide" @click="next"></div>
         </div>
       </div>
     </component>
