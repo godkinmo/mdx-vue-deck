@@ -2,8 +2,8 @@ module.exports = {
   extend: {
     colors: {
       theme: {
-        text: '#FFFFFF',
-        background: '#1A202C',
+        text: '#fff',
+        background: '#011627',
       },
       code: {
         green: '#b5f4a5',
@@ -19,21 +19,13 @@ module.exports = {
   textStyles: theme => ({
     heading: {
       output: false,
+      color: '#6AD798',
       fontWeight: theme('fontWeight.bold'),
       lineHeight: theme('lineHeight.tight'),
     },
-    h1: {
-      extends: 'heading',
-      fontSize: theme('fontSize.6xl'),
-    },
-    h2: {
-      extends: 'heading',
-      fontSize: theme('fontSize.5xl'),
-    },
-    h3: {
-      extends: 'heading',
-      fontSize: theme('fontSize.4xl'),
-    },
+    h1: { extends: 'heading', fontSize: theme('fontSize.6xl') },
+    h2: { extends: 'heading', fontSize: theme('fontSize.5xl') },
+    h3: { extends: 'heading', fontSize: theme('fontSize.4xl') },
     link: {
       fontWeight: theme('fontWeight.bold'),
       color: theme('colors.blue.600'),
@@ -56,15 +48,9 @@ module.exports = {
       '> * + *': {
         marginTop: '1.5rem',
       },
-      'h1': {
-        extends: 'h1',
-      },
-      'h2': {
-        extends: 'h2',
-      },
-      'h3': {
-        extends: 'h3',
-      },
+      '> h1': { extends: 'h1' },
+      '> h2': { extends: 'h2' },
+      '> h3': { extends: 'h3' },
       'ul': {
         paddingLeft: '1.5rem',
         listStyleType: 'disc',
