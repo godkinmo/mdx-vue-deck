@@ -1,7 +1,13 @@
 <template>
-  <div>
-    <pre ref="code" v-html="html" class="language-javascript">
-    </pre>
+  <div class="h-screen w-screen flex flex-col items-center justify-center">
+    <h1 v-if="title" v-text="title" class="text-gray-400 font-bold py-8"></h1>
+    <div class="flex-grow flex items-center">
+      <pre ref="code" v-html="html" :class="`language-${lang}`">
+      </pre>
+    </div>
+    <p class="h-16 mb-16">
+      {{ codeSteps[step].notes }}
+    </p>
   </div>
 </template>
 
@@ -14,6 +20,7 @@ export default {
 
   data() {
     return {
+      title: this.$attrs.title,
       lang: this.$attrs.lang,
       code: this.$attrs.code,
       codeSteps: this.$attrs.steps,
@@ -37,17 +44,13 @@ export default {
 
       // Returns a highlighted HTML string
       this.html = ''
+
       this.code.trim().split("\n").forEach((line, i) => {
-        const className = `token-line ${lines.includes(i+1) ? '' : 'opacity-25'} transition-normal`
-        this.html += `<div class="${className}">${Prism.highlight(line, Prism.languages[this.lang], this.lang)}</div>`
+        const className = `token-line ${!lines || lines.includes(i+1) ? '' : 'opacity-25'} transition-normal`
+        const lineText = line ? Prism.highlight(line, Prism.languages[this.lang], this.lang) : '<span class="inline-block"></span>'
+        this.html += `<div class="${className}">${lineText}</div>`
       })
     }
   }
 }
 </script>
-
-<style>
-  .token-line {
-      height: 1.5rem;
-  }
-</style>
