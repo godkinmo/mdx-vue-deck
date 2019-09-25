@@ -5,8 +5,10 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
-      const deckEl = this.$el.parentNode
-      this.componentPage = Array.from(this.$parent.$el.children).indexOf(deckEl) + 1
+      const deckEl = this.$el.closest('.markdown')
+      if (deckEl) {
+        this.componentPage = Array.from(deckEl.parentElement.children).indexOf(deckEl) + 1
+      }
     })
   },
 
