@@ -20,14 +20,19 @@ export default {
         this.$store.commit('setSteps', this.steps)
       }
     },
+    step(step) {
+      if (this.active) {
+        history.pushState({}, '', `/#/${this.currentPage}${step ? `.${step}`: ''}`);
+      }
+    },
   },
 
   computed: {
     currentPage() {
-      return this.$route.params.page
+      return parseInt(this.$route.params.page)
     },
     active() {
-      return parseInt(this.currentPage) === parseInt(this.componentPage)
+      return this.currentPage === this.componentPage
     },
     step() {
       return this.$store.state.step || 0

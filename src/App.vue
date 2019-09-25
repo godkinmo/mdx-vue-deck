@@ -63,9 +63,6 @@ export default {
       const fromPage = parseInt(from.params.page)
       this.transitionName = toPage < fromPage ? 'slide-right' : 'slide-left'
     },
-    '$store.state.step' (step) {
-      history.pushState({}, '', `/#/${this.page}${step ? `.${step}`: ''}`);
-    },
   },
 
   computed: {

@@ -1,5 +1,6 @@
 const keys = {
   page: 'mdx-deck-page',
+  step: 'mdx-deck-step',
 }
 
 export default {
@@ -21,6 +22,9 @@ export default {
     '$store.state.currentPage'(page) {
       if (!this.focused) return
       localStorage.setItem(keys.page, page)
+    },
+    '$store.state.step' (step) {
+      localStorage.setItem(keys.step, step)
     },
     focused: {
       immediate: true,
@@ -49,6 +53,9 @@ export default {
       switch (e.key) {
         case keys.page:
           this.$router.push({ name: 'home', params: { page: n }})
+          break
+        case keys.step:
+          this.$store.commit('setStep', n)
           break
         default:
           break

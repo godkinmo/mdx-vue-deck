@@ -32,9 +32,9 @@ export default {
   },
 
   mounted() {
-    setTimeout(() => {
+    this.$nextTick(() => {
       this.$store.commit('setCurrentPage', this.page)
-    }, 0)
+    })
 
     Prism.highlightAll()
 
