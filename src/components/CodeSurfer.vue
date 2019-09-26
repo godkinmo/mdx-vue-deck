@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       title: this.$attrs.title,
-      lang: this.$attrs.lang,
+      lang: this.$attrs.lang || 'javascript',
       code: this.$attrs.code,
       codeSteps: this.$attrs.steps,
       steps: this.$attrs.steps.length - 1,
@@ -40,13 +40,42 @@ export default {
 
   methods: {
     goStep(step) {
-      const { lines } = this.codeSteps[step]
+      const { lines, range, ranges } = this.codeSteps[step]
 
       // Returns a highlighted HTML string
       this.html = ''
 
-      this.code.trim().split("\n").forEach((line, i) => {
-        const className = `token-line ${!lines || lines.includes(i+1) ? '' : 'opacity-25'} transition-normal`
+      const code = this.code.default || this.code
+
+      code.trim().split("\n").forEach((line, i) => {
+        let show = false
+
+        const lineNumber = i+1
+
+        if (!lines && !range && !ranges) {
+          show = true
+        } else {
+          if (lines && lines.includes(lineNumber)) {
+            show = true
+          }
+          if (range && range.length === 2) {
+            if (lineNumber >=range[0] && lineNumber <= range[1]) {
+              show = true
+            }
+          }
+          if (ranges) {
+            ranges.forEach(deepRange => {
+              if (deepRange && deepRange.length === 2) {
+                if (lineNumber >=deepRange[0] && lineNumber <= deepRange[1]) {
+                  show = true
+                }
+              }
+            })
+          }
+        }
+
+        const className = `token-line ${show ? '' : 'opacity-25'} transition-normal`
+
         const lineText = line ? Prism.highlight(line, Prism.languages[this.lang], this.lang) : '<span class="inline-block"></span>'
         this.html += `<div class="${className}">${lineText}</div>`
       })
