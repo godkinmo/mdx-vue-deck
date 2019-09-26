@@ -1,12 +1,12 @@
 <template>
   <div class="h-screen w-screen flex flex-col items-center justify-center">
-    <h1 v-if="title" v-text="title" class="text-gray-400 font-bold py-8"></h1>
-    <div class="flex-grow flex items-center">
+    <h1 v-if="title" v-text="title" class="text-gray-400 font-bold mt-8 mb-4"></h1>
+    <div class="flex-grow flex items-center overflow-hidden">
       <pre ref="code" v-html="html" :class="`language-${lang}`">
       </pre>
     </div>
-    <p class="h-16 mb-16">
-      {{ codeSteps[step].notes }}
+    <p class="h-16 mt-4 mb-10">
+      {{ notes }}
     </p>
   </div>
 </template>
@@ -38,8 +38,20 @@ export default {
     }
   },
 
+  computed: {
+    notes() {
+      if (!this.codeSteps[this.step]) {
+        return ''
+      }
+      return this.codeSteps[this.step].notes
+    }
+  },
+
   methods: {
     goStep(step) {
+      if (!this.codeSteps[step]) {
+        return
+      }
       const { lines, range, ranges } = this.codeSteps[step]
 
       // Returns a highlighted HTML string
