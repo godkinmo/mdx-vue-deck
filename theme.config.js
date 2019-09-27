@@ -87,7 +87,7 @@ module.exports = {
         width: '50%',
         textAlign: 'left',
         borderCollapse: 'collapse',
-        overflow: 'x-scroll',
+        overflow: 'scroll-x',
       },
       'table th, table td': {
         minWidth: '200px',
