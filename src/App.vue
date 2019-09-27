@@ -15,18 +15,20 @@
           </router-view>
         </transition>
 
-        <div v-if="mode==='normal'" class="fixed bottom-0 inset-x-0 mb-2 flex justify-center">
-          <button v-for="i in decks.length" :key="i"
-            type="button"
-            class="block p-1 border-2 border-transparent focus:border-green-500 rounded-full cursor-default focus:outline-none"
-            :class="[i <= page ? 'opacity-50' : 'opacity-25']"
-            @click="goPage(i)"
-          >
-            <span class="block w-2 h-2 bg-green-500 rounded-full"></span>
-          </button>
+        <div v-if="mode==='normal'">
+          <div class="fixed bottom-0 inset-x-0 mb-2 flex justify-center">
+            <button v-for="i in decks.length" :key="i"
+              type="button"
+              class="block p-1 border-2 border-transparent focus:border-theme-dot rounded-full cursor-default focus:outline-none"
+              :class="[i <= page ? 'opacity-50' : 'opacity-25']"
+              @click="goPage(i)"
+            >
+              <span class="block w-2 h-2 bg-theme-dot rounded-full"></span>
+            </button>
 
-          <div role="button" class="fixed w-16 h-full top-0 left-0" title="Previous Slide" @click="previous"></div>
-          <div role="button" class="fixed w-16 h-full top-0 right-0" title="Next Slide" @click="next"></div>
+            <div role="button" class="fixed w-16 h-full top-0 left-0" title="Previous Slide" @click="previous"></div>
+            <div role="button" class="fixed w-16 h-full top-0 right-0" title="Next Slide" @click="next"></div>
+          </div>
         </div>
       </div>
     </component>
