@@ -13,6 +13,10 @@ module.exports = {
           ]
         }
       ]
-    }
+    },
+  },
+  chainWebpack: config => {
+    config.resolve.alias
+      .set('@deck', process.env.SRC_DECK)
   }
 }

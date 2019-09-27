@@ -10,7 +10,7 @@
 
 <script>
 import Prism from 'prismjs'
-import MdxDeck from '@/mdx/deck.mdx'
+import MdxDeck from '@deck'
 
 export default {
   components: {

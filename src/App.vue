@@ -37,7 +37,7 @@
 
 <script>
 import Mousetrap from 'mousetrap'
-import MdxDeck from '@/mdx/deck.mdx'
+import MdxDeck from '@deck'
 
 import PresenterMode from '@/components/Modes/PresenterMode.vue'
 import OverviewMode from '@/components/Modes/OverviewMode.vue'

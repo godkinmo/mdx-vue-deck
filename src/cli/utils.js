@@ -1,11 +1,10 @@
 import path from 'path'
 import execa from 'execa'
-import { copySync, ensureSymlinkSync, existsSync, removeSync } from 'fs-extra'
+import { copySync, existsSync } from 'fs-extra'
 
 import * as colors from './colors'
 import * as emoji from './emoji'
 import packageJson from '../../package.json'
-import { deckMdxFile } from '../constants'
 
 /**
  * Prints messages to console.
@@ -73,17 +72,6 @@ export function copyFile(source, destination) {
 }
 
 /**
- * Link file source to destination.
- *
- * @param {string} source
- * @param {string} destination
- */
-export function symlinkFile(source, destination) {
-  removeSync(destination)
-  ensureSymlinkSync(source, destination)
-}
-
-/**
  * Run vue-cli-service command
  */
 export function vueCliService(...args) {
@@ -91,6 +79,9 @@ export function vueCliService(...args) {
     cwd: path.resolve(__dirname, '../../'),
     stdio: 'inherit',
     preferLocal: true,
+    env: {
+      SRC_DECK: process.env.__SRC__
+    }
   })
 }
 
@@ -98,7 +89,6 @@ export function prepareVueCliService({ flags }, filename) {
   if (flags.config) {
     const tailwindThemeConfig = path.resolve(flags.config)
     !exists(tailwindThemeConfig) && die(colors.file(flags.config), 'does not exists')
-
     process.env.__TAILWIND_THEME_CONFIG_PATH__ = tailwindThemeConfig
   } else {
     process.env.__TAILWIND_THEME_CONFIG_PATH__ = path.resolve('./theme.config.js')
@@ -108,5 +98,5 @@ export function prepareVueCliService({ flags }, filename) {
 
   !exists(source) && die(colors.file(filename), 'does not exists.')
 
-  symlinkFile(source, deckMdxFile)
+  process.env.__SRC__ = source
 }
