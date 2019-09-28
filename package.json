@@ -1,6 +1,6 @@
 {
   "name": "mdx-vue-deck",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "MDX-based presentation decks",
   "repository": "https://github.com/godkinmo/mdx-vue-deck.git",
   "bin": {
@@ -20,7 +20,6 @@
     "@babel/cli": "^7.6.0",
     "@babel/node": "^7.6.1",
     "@babel/preset-env": "^7.6.0",
-    "@fullhuman/postcss-purgecss": "^1.2.0",
     "@mdx-js/vue-loader": "^1.4.0",
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
