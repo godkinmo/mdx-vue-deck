@@ -2,7 +2,7 @@ export default {
   render(createElement) {
     return createElement('div', {
       attrs: {
-        class: 'flex flex-row -mx-2'
+        class: 'w-full flex flex-row -mx-2'
       }
     }, [
       createElement('div', {

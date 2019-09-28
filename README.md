@@ -1,26 +1,10 @@
 # MDX Deck
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-
 ## Getting Started
 
-![](./demo.gif)
+`npm i -D mdx-vue-deck`
 
-Modify an [MDX][mdx] file in `src/mdx/deck.mdx` and separate each slide with `---`.
+Create an [MDX][mdx] file and separate each slide with `---`.
 
 ````mdx
 # This is the title of my deck
@@ -28,11 +12,6 @@ Modify an [MDX][mdx] file in `src/mdx/deck.mdx` and separate each slide with `--
 ---
 
 # About Me
-
----
-
-```jsx
-<CodeSnippet />
 ```
 
 ---
@@ -43,6 +22,16 @@ import HelloWold from './components/HelloWold'
 
 # The end
 ````
+
+Add a run script to your package.json with the MDX Deck CLI pointing to the .mdx file to start the dev server:
+
+```
+"scripts": {
+  "eject": "mdx-vue-deck eject",
+  "start": "mdx-vue-deck dev deck.mdx -c theme.config.js",
+  "build": "mdx-vue-deck build deck.mdx -c theme.config.js"
+},
+```
 
 ## Keyboard Shortcuts
 

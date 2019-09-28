@@ -1,6 +1,6 @@
 {
   "name": "mdx-vue-deck",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "MDX-based presentation decks",
   "repository": "https://github.com/godkinmo/mdx-vue-deck.git",
   "bin": {

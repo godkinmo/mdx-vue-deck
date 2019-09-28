@@ -9,7 +9,7 @@ export default {
     }, [
       createElement('img', {
         attrs: {
-          class: 'w-full h-full',
+          class: 'mx-auto h-full',
           src: this.src,
         }
       })
