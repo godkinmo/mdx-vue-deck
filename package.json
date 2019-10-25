@@ -2,33 +2,28 @@
   "name": "mdx-vue-deck",
   "version": "0.1.6",
   "description": "MDX-based presentation decks",
-  "repository": "https://github.com/godkinmo/mdx-vue-deck.git",
-  "bin": {
-    "mdx-vue-deck": "lib/cli.js"
+  "author": "Jack Fong",
+  "scripts": {
+    "build": "babel-node src/cli.js build hello.mdx",
+    "test:unit": "vue-cli-service test:unit",
+    "babelify": "babel src --out-dir lib --copy-files",
+    "help": "babel-node src/cli.js",
+    "start": "babel-node src/cli.js dev hello.mdx"
   },
   "main": "lib/index.js",
-  "author": "Jack Fong",
-  "license": "MIT",
-  "scripts": {
-    "babelify": "babel src --out-dir lib --copy-files",
-    "start": "babel-node src/cli.js dev hello.mdx",
-    "build": "babel-node src/cli.js build hello.mdx",
-    "help": "babel-node src/cli.js",
-    "test:unit": "vue-cli-service test:unit"
-  },
   "dependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/node": "^7.6.1",
     "@babel/preset-env": "^7.6.0",
     "@mdx-js/vue-loader": "^1.4.0",
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
+    "@vue/cli-plugin-babel": "^4.0.5",
+    "@vue/cli-service": "^4.0.5",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^25.0.0",
     "babel-plugin-prismjs": "^1.1.1",
     "chalk": "^2.4.2",
-    "core-js": "^2.6.5",
+    "core-js": "^3.3.2",
     "execa": "^2.0.4",
     "fs-extra": "^8.1.0",
     "markdown-it": "^9.1.0",
@@ -45,5 +40,10 @@
     "vue-router": "^3.0.3",
     "vue-template-compiler": "^2.6.10",
     "vuex": "^3.0.1"
-  }
+  },
+  "bin": {
+    "mdx-vue-deck": "lib/cli.js"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/godkinmo/mdx-vue-deck.git"
 }
