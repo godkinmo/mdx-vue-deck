@@ -5,7 +5,7 @@ module.exports = {
   ],
   plugins: [
     ['prismjs', {
-      languages: ['javascript', 'css', 'clike', 'bash', 'css-extras', 'php', 'jsx', 'diff'],
+      languages: ['javascript', 'css', 'clike', 'bash', 'css-extras', 'php', 'jsx', 'diff', 'json'],
       // plugins: ['line-numbers'],
       // theme: 'okaidia',
       css: false

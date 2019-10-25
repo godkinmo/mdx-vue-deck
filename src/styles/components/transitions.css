@@ -1,34 +1,34 @@
 /* Slide Transition
 ---------------------------------------------------------------------------- */
 .slide-right-enter-active {
-  transition: all .2s ease-in-out;
+  transition: all .3s ease-out;
 }
 .slide-right-leave-active {
-  transition: all .2s ease-in-out;
+  transition: all .3s ease-out;
 }
 .slide-right-enter {
-  opacity: 0;
-  transform: scale(.5) translateX(-100%);
+  opacity: .5;
+  transform: scale(.5) translateX(-100%) translateY(50%);
 }
 .slide-right-leave-to {
-  opacity: 0;
-  transform: scale(.5) translateX(100%);
+  opacity: .5;
+  transform: scale(.5) translateX(100%) translateY(50%);
 }
 
 
 .slide-left-enter-active {
-  transition: all .2s ease-in-out;
+  transition: all .3s ease-out;
 }
 .slide-left-leave-active {
-  transition: all .2s ease-in-out;
+  transition: all .3s ease-out;
 }
 .slide-left-enter {
-  opacity: 0;
-  transform: scale(.5) translateX(100%);
+  opacity: .5;
+  transform: scale(.5) translateX(100%) translateY(50%);
 }
 .slide-left-leave-to {
-  opacity: 0;
-  transform: scale(.5) translateX(-100%);
+  opacity: .5;
+  transform: scale(.5) translateX(-100%) translateY(50%);
 }
 
 /* Fade Transition
