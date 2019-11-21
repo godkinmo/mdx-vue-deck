@@ -5,7 +5,7 @@ module.exports = function (src) {
   src = src.replace(/inlineCode/g, 'code')
 
   /* eslint-disable-next-line */
-  const imgRe = new RegExp(`(<img parentName="p"(.|\r|\n)*?<\/img>)`, 'g');
+  const imgRe = new RegExp(`(<img parentName="p"(.|\r|\n)*?<\/img>)`, 'g')
   src = _.replace(src, imgRe, replacement => {
     const imgRe = /"src": "(.*)"/g
     const altRe = /"alt": "(.*)"/g
@@ -17,7 +17,7 @@ module.exports = function (src) {
   })
 
   /* eslint-disable-next-line */
-  const codeRe = new RegExp(`(<code parentName="pre"(.|\r|\n)*?<\/code>)`, 'g');
+  const codeRe = new RegExp(`(<code parentName="pre"(.|\r|\n)*?<\/code>)`, 'g')
   src = _.replace(src, codeRe, replacement => {
     const classNameRe = /"className": "(.*)"/g
     const className = classNameRe.exec(replacement)
@@ -27,6 +27,16 @@ module.exports = function (src) {
 
     return `<code ${className ? `class='${className[1]}'` : ''}>${code}</code>`
   })
+
+  /* eslint-disable-next-line */
+  const linkRe = new RegExp(`(<a parentName="p"(.|\r|\n)*?<\/a>)`, 'g')
+  src = _.replace(src, linkRe, replacement => {
+    const urlRe = /"href": "(.*)"/g
+    const url = urlRe.exec(replacement)
+
+    return `<a ${url ? `href='${url[1]}' target='_blank'` : ''}>${url[1]}</a>`
+  })
+
 
   return src
 }
