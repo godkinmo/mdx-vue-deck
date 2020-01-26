@@ -1,6 +1,6 @@
 {
   "name": "mdx-vue-deck",
-  "version": "0.1.8",
+  "version": "0.1.11",
   "description": "MDX-based presentation decks",
   "author": "Jack Fong",
   "scripts": {
@@ -34,6 +34,7 @@
     "postcss-nesting": "^7.0.1",
     "prettify-xml": "^1.2.0",
     "prismjs": "^1.17.1",
+    "serialize-javascript": "^2.1.2",
     "tailwindcss": "^1.1.2",
     "tailwindcss-typography": "^2.2.0",
     "vue": "^2.6.10",
