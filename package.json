@@ -1,6 +1,6 @@
 {
   "name": "mdx-vue-deck",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "MDX-based presentation decks",
   "author": "Jack Fong",
   "scripts": {
@@ -20,6 +20,7 @@
     "@vue/cli-service": "^4.0.5",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^25.0.0",
     "babel-plugin-prismjs": "^1.1.1",
     "chalk": "^2.4.2",
